@@ -272,47 +272,4 @@
             // Captura os dados do formulário
             const formData = new FormData(document.getElementById('questionario'));
             let y = 40; // Posição inicial para as perguntas e respostas
-            const lineHeight = 10; // Altura da linha
-            const pageHeight = 297 - 20; // Altura da página - margem
-
-            formData.forEach((value, key) => {
-                // Verifica se a posição y está perto do final da página
-                if (y >= pageHeight) {
-                    doc.addPage(); // Adiciona uma nova página
-                    setupPage(); // Configura a nova página
-                    y = 40; // Reinicia a posição y
-                }
-
-                // Adiciona pergunta
-                doc.setFontSize(14);
-                doc.setTextColor(255, 255, 255); // Cor do texto branca
-                doc.text(`${key}:`, 10, y);
-                y += lineHeight; // Incrementa a posição y para a resposta
-
-                // Adiciona resposta
-                doc.setFontSize(12);
-                doc.setTextColor(200, 200, 200); // Cor do texto cinza para respostas
-                const responseLines = doc.splitTextToSize(value, 190); // Divide a resposta em várias linhas, se necessário
-                doc.text(responseLines, 10, y);
-                y += responseLines.length * lineHeight + 5; // Incrementa a posição y para a próxima pergunta, com espaçamento extra
-            });
-
-            // Salva o PDF
-            const pdfOutput = doc.output('blob');
-            const url = URL.createObjectURL(pdfOutput);
-            const link = document.createElement('a');
-            link.href = url;
-            link.download = 'questionario.pdf';
-            document.body.appendChild(link);
-            link.click();
-            document.body.removeChild(link);
-
-            alert('PDF gerado! Agora você pode enviar o arquivo para o WhatsApp.');
-
-            // Aqui você pode abrir o WhatsApp Web, mas o envio do PDF deve ser manual
-            const whatsappLink = `https://wa.me/553198681305?text=Eu%20completei%20o%20questionário%20Necromante.%20Aqui%20está%20o%20PDF%20gerado.%20Por%20favor%20envie-o%20para%20mim.`;
-            window.open(whatsappLink, '_blank');
-        }
-    </script>
-</body>
-</html>
+            c
